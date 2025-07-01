@@ -52,6 +52,13 @@ public class RegistrationPage {
     @FindBy(css = "[data-qa='create-account']")
     private WebElement createAccountButton;
 
+    @FindBy(css = "[data-qa='account-created']")
+    private WebElement accountCreated;
+
+    @FindBy(css = "[data-qa='continue-button']")
+    private WebElement continueButton;
+
+
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -76,4 +83,14 @@ public class RegistrationPage {
         inputMobileNumber.sendKeys(mobileNumber);
         createAccountButton.click();
     }
+
+    public void accountCreatedIsVisible() {
+        accountCreated.isDisplayed();
+    }
+
+    public void clickContinueButton() {
+        continueButton.click();
+    }
+
+
 }

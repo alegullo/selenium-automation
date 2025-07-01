@@ -1,8 +1,5 @@
 package br.com.automationexercise.TCs;
 
-import static com.codeborne.selenide.Condition.name;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.time.Duration;
 import java.util.Random;
 
@@ -11,12 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import br.com.tests.Pages.HomePage;
 import br.com.tests.Pages.LoginPage;
@@ -60,6 +53,10 @@ public class RegisterUser {
         loginPage.enterNewEmail(email);
         loginPage.clickSignupButton();
         registrationPage.verifyTitleIsVisible();
-        registrationPage.enterAccountInformation(password, "10", "April", "1980", "First name", "Last Name", "Address", "State", "City", "123456", "1234567890");
-}
+        registrationPage.enterAccountInformation(password, "10", "April", "1980", "First name", "Last Name", "Address", "Canada", "City", "123456", "1234567890");
+        registrationPage.accountCreatedIsVisible();
+        registrationPage.clickContinueButton();
+        homePage.userIconIsVisible();
+        homePage.clickDeleteAccountButton();
+    }
 }

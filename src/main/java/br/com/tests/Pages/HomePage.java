@@ -18,6 +18,15 @@ public class HomePage {
     @FindBy(xpath = "//*[text()='New User Signup!']")
     WebElement newUserSingnupVisible;
 
+    @FindBy(css = "[class='fa fa-user']")
+    private WebElement userIcon;
+
+    @FindBy(css = "a[href='/delete_account']")
+    private WebElement deleteAccountButton;
+
+    @FindBy(css = "[data-qa='account-deleted']")
+    private WebElement verifyAccountDeleted;
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -36,5 +45,17 @@ public class HomePage {
 
     public void newUserSingnupVisible() {
         newUserSingnupVisible.isDisplayed();
+    }
+
+    public void userIconIsVisible() {
+        userIcon.isDisplayed();
+    }
+
+    public void clickDeleteAccountButton() {
+        deleteAccountButton.click();
+    }
+
+    public void verifyAccountDeleted() {
+        verifyAccountDeleted.isDisplayed();
     }
 }
