@@ -1,4 +1,4 @@
-package br.com.automationexercise.TCs;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

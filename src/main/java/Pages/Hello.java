@@ -1,4 +1,4 @@
-package br.com.tests.Pages;
+package Pages;
 
 class Hello {
 	static public void main(String args[]) {

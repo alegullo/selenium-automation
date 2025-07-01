@@ -1,4 +1,4 @@
-package br.com.automationexercise.TCs;
+
 
 import java.time.Duration;
 import java.util.Random;
@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import br.com.tests.Pages.HomePage;
-import br.com.tests.Pages.LoginPage;
-import br.com.tests.Pages.RegistrationPage;
+import Pages.HomePage;
+import Pages.LoginPage;
+import Pages.RegistrationPage;
 
 public class RegisterUser {
 

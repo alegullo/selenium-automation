@@ -1,4 +1,4 @@
-package br.com.tests.Pages;
+package Pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
