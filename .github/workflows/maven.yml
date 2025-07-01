@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build and Test with Maven
-      run: mvn clean verify
+      run: mvn clean verify -Dtestng.dtd.http=true
 
     - name: Publish Test Report
       if: always()
