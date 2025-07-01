@@ -59,4 +59,19 @@ public class RegisterUser {
         homePage.userIconIsVisible();
         homePage.clickDeleteAccountButton();
     }
+
+    @Test
+    @DisplayName("Login User with correct credentials")
+    void loginUserCorrectCredentials() {
+
+        homePage.openHomePage();
+        homePage.isHomePageVisible();
+        homePage.clickSignupLoginButton();
+        loginPage.loginAccountVisible();
+        loginPage.enterEmailLogin("alexandre.qa@teste.com");
+        loginPage.enterPasswordLogin("12345");
+        loginPage.clickLoginButton();
+        homePage.userIconIsVisible();
+
+    }
 }

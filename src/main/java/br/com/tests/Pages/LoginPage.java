@@ -21,6 +21,9 @@ public class LoginPage {
     @FindBy(css = "[data-qa='signup-button']")
     WebElement signupButton;
 
+    @FindBy(xpath = "//*[text()='Login to your account']")
+    WebElement newUserLoginVisible;
+
     @FindBy(css = "[data-qa='login-email']")
     WebElement emailLogin;
 
@@ -29,6 +32,9 @@ public class LoginPage {
 
     @FindBy(css = "[data-qa='login-button']")
     WebElement loginButton;
+
+
+
 
 
     public LoginPage(WebDriver driver) {
@@ -50,6 +56,22 @@ public class LoginPage {
 
     public void clickSignupButton() {
         signupButton.click();
+    }
+
+    public void loginAccountVisible() {
+        newUserLoginVisible.isDisplayed();
+    }
+
+    public void enterEmailLogin(String email) {
+        emailLogin.sendKeys(email);
+    }
+
+    public void enterPasswordLogin(String password) {
+        passwordLogin.sendKeys(password);
+    }
+
+    public void clickLoginButton() {
+        loginButton.click();
     }
 
 }
