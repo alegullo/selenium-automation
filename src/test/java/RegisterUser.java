@@ -37,7 +37,7 @@ public class RegisterUser extends BaseTest {
     }
 
     @Test 
-    @DisplayName("Register User")
+    @DisplayName("Test Case 1: Register User")
     @Description("Teste de cadastro completo de usuário")
     @Story("Cadastro de Usuário")
     void registerUser() {
@@ -61,8 +61,8 @@ public class RegisterUser extends BaseTest {
     }
 
     @Test
-    @DisplayName("Login User with correct credentials")
-    @Description(" Testa o login com credenciais corretas.")
+    @DisplayName("Test Case 2: Login User with correct email and password")
+    @Description("Testa o login com credenciais corretas.")
     @Story("Login de Usuário")
     void loginUserCorrectCredentials() {
 
@@ -78,8 +78,8 @@ public class RegisterUser extends BaseTest {
     }
 
     @Test
-    @DisplayName("Login com credenciais incorretas")
-    @Description(" Testa o login com credenciais incorretas.")
+    @DisplayName("Test Case 3: Login User with incorrect email and password")
+    @Description("Testa o login com credenciais incorretas.")
     @Story("Login de Usuário")
     void loginComCredenciaisIncorretas() {
 
@@ -90,11 +90,11 @@ public class RegisterUser extends BaseTest {
         loginPage.enterEmailLogin("email_incorreto@teste.com");
         loginPage.enterPasswordLogin("senha_incorreta");
         loginPage.clickLoginButton();
-        assertEquals("Your email or password is incorrect!", loginPage.getErrorMessage());
+        assertEquals("Your email or password is incorrect!", loginPage.getErrorMessageLogin());
 }
 
     @Test
-    @DisplayName("Fazer login e depois logout")
+    @DisplayName("Test Case 4: Logout User")
     @Description("Testa o fluxo completo de login e logout.")
     @Story("Login e Logout de Usuário")
     void deveFazerLoginELogout() {
@@ -112,6 +112,19 @@ public class RegisterUser extends BaseTest {
         assertTrue(loginPage.isLoginAccountVisible(), "A tela de login foi exibida.");
         }
 
-    
+    @Test
+    @DisplayName("Test Case 5: Register User with existing email")
+    @Description("Testa o cadastro de usuário com email já existente.")
+    @Story("Cadastro de Usuário")
+    void registerUserWithExistingEmail() {
+        homePage.openHomePage();
+        homePage.clickSignupLoginButton();
+        loginPage.loginAccountVisible();
+        loginPage.enterNewUserName("Alexandre");
+        loginPage.enterNewEmail(emailPadrao);
+        loginPage.clickSignupButton();
+        assertEquals("Email Address already exist!", loginPage.getErrorMessageRegister());
+        
+    }
 
 }

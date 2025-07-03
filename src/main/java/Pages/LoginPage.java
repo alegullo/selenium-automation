@@ -77,9 +77,18 @@ public class LoginPage {
         loginButton.click();
     }
 
-    public String getErrorMessage() {
+    public String getErrorMessageLogin() {
         try {
             WebElement errorElement = driver.findElement(By.xpath("//*[text()='Your email or password is incorrect!']"));
+            return errorElement.isDisplayed() ? errorElement.getText() : "";
+        } catch (NoSuchElementException e) {
+            return "";
+        }
+    }
+
+    public String getErrorMessageRegister() {
+        try {
+            WebElement errorElement = driver.findElement(By.xpath("//*[text()='Email Address already exist!']"));
             return errorElement.isDisplayed() ? errorElement.getText() : "";
         } catch (NoSuchElementException e) {
             return "";
