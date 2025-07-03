@@ -1,9 +1,11 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.NoSuchElementException;
 
 public class LoginPage {
 
@@ -33,7 +35,8 @@ public class LoginPage {
     @FindBy(css = "[data-qa='login-button']")
     WebElement loginButton;
 
-
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
+    WebElement errorMessageLogin;
 
 
 
@@ -73,5 +76,16 @@ public class LoginPage {
     public void clickLoginButton() {
         loginButton.click();
     }
+
+    public String getErrorMessage() {
+        try {
+            WebElement errorElement = driver.findElement(By.xpath("//*[text()='Your email or password is incorrect!']"));
+            return errorElement.isDisplayed() ? errorElement.getText() : "";
+        } catch (NoSuchElementException e) {
+            return "";
+        }
+    }
+
+    
 
 }

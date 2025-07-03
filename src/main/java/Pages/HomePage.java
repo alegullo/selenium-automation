@@ -3,11 +3,8 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
-
-    private WebDriver driver;
+public class HomePage extends BasePage {
 
     @FindBy(id="slider-carousel")
     WebElement verifyHomePageVisible;
@@ -28,15 +25,15 @@ public class HomePage {
     private WebElement verifyAccountDeleted;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public boolean isHomePageVisible() {
-        return verifyHomePageVisible.isDisplayed();
+        return isElementVisible(verifyHomePageVisible);
     }
+    
     public void clickSignupLoginButton() {
-        signupLoginButton.click();
+        safeClick(signupLoginButton);
     }
 
     public void openHomePage() {
@@ -44,18 +41,18 @@ public class HomePage {
     }
 
     public void newUserSingnupVisible() {
-        newUserSingnupVisible.isDisplayed();
+        isElementVisible(newUserSingnupVisible);
     }
 
     public void userIconIsVisible() {
-        userIcon.isDisplayed();
+        isElementVisible(userIcon);
     }
 
     public void clickDeleteAccountButton() {
-        deleteAccountButton.click();
+        safeClick(deleteAccountButton);
     }
 
     public void verifyAccountDeleted() {
-        verifyAccountDeleted.isDisplayed();
+        isElementVisible(verifyAccountDeleted);
     }
 }

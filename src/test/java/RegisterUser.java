@@ -1,52 +1,50 @@
-
-
-import java.time.Duration;
 import java.util.Random;
+import com.github.javafaker.Faker;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import Pages.HomePage;
 import Pages.LoginPage;
 import Pages.RegistrationPage;
 
-public class RegisterUser {
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    WebDriver driver;
-    HomePage homePage;
-    LoginPage loginPage;
-    RegistrationPage registrationPage;
-    String letras = "abcdefghijklmnopqrstuvwxyz";
-    Random rand = new Random();
-    String name = "Ale Teste" + rand.nextInt(1000);
-    String email = "ale.teste" + rand.nextInt(1000) + "@gmail.com";
-    String password = "123456789";
+@Epic("Automação de Testes")
+@Feature("Cadastro e Login de Usuários")
+public class RegisterUser extends BaseTest {
 
+    private HomePage homePage;
+    private LoginPage loginPage;
+    private RegistrationPage registrationPage;
+    private Faker faker = new Faker();
+    
+    @Override
     @BeforeEach
-	void start() {
-        driver = new ChromeDriver();
-		homePage = new HomePage(driver);
+    void setUp() {
+        super.setUp();
+        homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
         registrationPage = new RegistrationPage(driver);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-	}
-
-    @AfterEach
-	void finish() {
-		driver.close();
-	}
+    }
 
     @Test 
     @DisplayName("Register User")
+    @Description("Teste de cadastro completo de usuário")
+    @Story("Cadastro de Usuário")
     void registerUser() {
+        String name = faker.name().fullName();
+        String email = faker.internet().emailAddress();
+        String password = faker.internet().password(8, 12);
         
         homePage.openHomePage();
-        homePage.isHomePageVisible();
+        assertTrue(homePage.isHomePageVisible(), "Página inicial deve estar visível");
         homePage.clickSignupLoginButton();
         loginPage.newUserSingnupVisible();
         loginPage.enterNewUserName(name);
@@ -74,4 +72,19 @@ public class RegisterUser {
         homePage.userIconIsVisible();
 
     }
+
+    @Test
+    @DisplayName("Login com credenciais incorretas")
+    void loginComCredenciaisIncorretas() {
+
+    homePage.openHomePage();
+    homePage.isHomePageVisible();
+    homePage.clickSignupLoginButton();
+    loginPage.loginAccountVisible();
+    loginPage.enterEmailLogin("email_incorreto@teste.com");
+    loginPage.enterPasswordLogin("senha_incorreta");
+    loginPage.clickLoginButton();
+    assertEquals("Your email or password is incorrect!", loginPage.getErrorMessage());
+}
+
 }
