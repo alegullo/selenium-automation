@@ -86,6 +86,16 @@ public class LoginPage {
         }
     }
 
+    public void realizarLogin(String email, String senha) {
+        enterEmailLogin(email);
+        enterPasswordLogin(senha);
+        clickLoginButton();
+    }
+
+    public boolean isLoginAccountVisible() {
+        // Substitua o seletor pelo identificador correto do elemento da tela de login
+        return driver.findElement(By.xpath("//*[text()='Login to your account']")).isDisplayed();
+    }
     
 
 }

@@ -24,6 +24,11 @@ public class HomePage extends BasePage {
     @FindBy(css = "[data-qa='account-deleted']")
     private WebElement verifyAccountDeleted;
 
+    @FindBy(css = "a[href='/logout']")
+    private WebElement logoutButton;
+
+    // ------------------------------------------------------------
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -54,5 +59,9 @@ public class HomePage extends BasePage {
 
     public void verifyAccountDeleted() {
         isElementVisible(verifyAccountDeleted);
+    }
+
+    public void clickLogoutButton() {
+        safeClick(logoutButton);
     }
 }

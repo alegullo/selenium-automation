@@ -52,8 +52,8 @@ public class WebDriverConfig {
         
         // Configurações comuns
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(30));
+        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(5));
+        driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(10));
         
         return driver;
     }

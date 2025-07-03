@@ -24,6 +24,8 @@ public class RegisterUser extends BaseTest {
     private LoginPage loginPage;
     private RegistrationPage registrationPage;
     private Faker faker = new Faker();
+    private String emailPadrao = "alexandre.qa@teste.com";
+    private String passwordPadrao = "12345";
     
     @Override
     @BeforeEach
@@ -60,6 +62,8 @@ public class RegisterUser extends BaseTest {
 
     @Test
     @DisplayName("Login User with correct credentials")
+    @Description(" Testa o login com credenciais corretas.")
+    @Story("Login de Usuário")
     void loginUserCorrectCredentials() {
 
         homePage.openHomePage();
@@ -75,16 +79,39 @@ public class RegisterUser extends BaseTest {
 
     @Test
     @DisplayName("Login com credenciais incorretas")
+    @Description(" Testa o login com credenciais incorretas.")
+    @Story("Login de Usuário")
     void loginComCredenciaisIncorretas() {
 
-    homePage.openHomePage();
-    homePage.isHomePageVisible();
-    homePage.clickSignupLoginButton();
-    loginPage.loginAccountVisible();
-    loginPage.enterEmailLogin("email_incorreto@teste.com");
-    loginPage.enterPasswordLogin("senha_incorreta");
-    loginPage.clickLoginButton();
-    assertEquals("Your email or password is incorrect!", loginPage.getErrorMessage());
+        homePage.openHomePage();
+        homePage.isHomePageVisible();
+        homePage.clickSignupLoginButton();
+        loginPage.loginAccountVisible();
+        loginPage.enterEmailLogin("email_incorreto@teste.com");
+        loginPage.enterPasswordLogin("senha_incorreta");
+        loginPage.clickLoginButton();
+        assertEquals("Your email or password is incorrect!", loginPage.getErrorMessage());
 }
+
+    @Test
+    @DisplayName("Fazer login e depois logout")
+    @Description("Testa o fluxo completo de login e logout.")
+    @Story("Login e Logout de Usuário")
+    void deveFazerLoginELogout() {
+
+        // Act
+        homePage.openHomePage();
+        assertTrue(homePage.isHomePageVisible(), "A página inicial deve estar visível após o acesso.");
+        homePage.clickSignupLoginButton();
+        loginPage.loginAccountVisible();
+        assertTrue(loginPage.isLoginAccountVisible(), "A tela de login foi exibida.");
+        loginPage.realizarLogin(emailPadrao, passwordPadrao);
+        homePage.userIconIsVisible();
+        homePage.clickLogoutButton();
+        loginPage.loginAccountVisible();
+        assertTrue(loginPage.isLoginAccountVisible(), "A tela de login foi exibida.");
+        }
+
+    
 
 }

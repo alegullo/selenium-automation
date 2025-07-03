@@ -60,7 +60,7 @@ mvn clean test allure:report
 ### 3. Visualizar relatórios
 ```bash
 # Abrir relatório Allure
-mvn allure:serve
+.\mvnw.cmd allure:serve
 ```
 
 ## 📊 Relatórios
@@ -78,11 +78,6 @@ O projeto gera relatórios detalhados usando Allure Reports, incluindo:
 - **loginUserCorrectCredentials()**: Login com credenciais válidas
 - **loginComCredenciaisIncorretas()**: Login com credenciais inválidas
 
-### SeleniumCadastro.java
-- **createDonationPoint()**: Cadastro de ponto de doação
-
-### Slogan.java
-- **addsTwoNumbers()**: Verificação do slogan do site
 
 ## 🔧 Configurações
 
