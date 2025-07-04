@@ -1,0 +1,4 @@
+# Ignorar pastas de build e resultados temporários
+/target/
+/allure-results/
+/.allure/ 

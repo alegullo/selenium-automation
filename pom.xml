@@ -3,7 +3,7 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.rocketskills</groupId>
+	<groupId>automation-exercise</groupId>
 	<artifactId>selenium-automation</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
@@ -112,9 +112,9 @@
 			<plugin>
 				<groupId>io.qameta.allure</groupId>
 				<artifactId>allure-maven</artifactId>
-				<version>2.12.0</version>
+				<version>2.11.2</version>
 				<configuration>
-					<reportVersion>${allure.version}</reportVersion>
+					<resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
