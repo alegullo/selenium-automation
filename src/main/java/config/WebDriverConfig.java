@@ -25,7 +25,7 @@ public class WebDriverConfig {
             case CHROME:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--start-maximized");
+            //    chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--disable-notifications");
                 chromeOptions.addArguments("--disable-popup-blocking");
             //    chromeOptions.addArguments("--headless"); // Para execução sem interface gráfica
@@ -52,8 +52,8 @@ public class WebDriverConfig {
         
         // Configurações comuns
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(5));
-        driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(java.time.Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(java.time.Duration.ofSeconds(30));
         
         return driver;
     }

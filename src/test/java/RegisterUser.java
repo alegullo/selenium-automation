@@ -1,4 +1,3 @@
-import java.util.Random;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;

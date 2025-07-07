@@ -27,6 +27,11 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/logout']")
     private WebElement logoutButton;
 
+    @FindBy(xpath = "//a[contains(text(),'Contact us')]")
+    private WebElement contactUsBtn;
+
+
+
     // ------------------------------------------------------------
 
     public HomePage(WebDriver driver) {
@@ -63,5 +68,9 @@ public class HomePage extends BasePage {
 
     public void clickLogoutButton() {
         safeClick(logoutButton);
+    }
+
+    public void clickContactUs() {
+        contactUsBtn.click();
     }
 }
