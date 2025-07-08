@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import Pages.HomePage;
+import Pages.TestCasePage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,12 +20,14 @@ public class VerifyPages extends BaseTest {
 
     private ContactPage contactPage;
     private HomePage homePage;
+    private TestCasePage testCasePage;
 
     @BeforeEach
     void setUp() {
         super.setUp();
         contactPage = new ContactPage(driver);
         homePage = new HomePage(driver);
+        testCasePage = new TestCasePage(driver);
     }
 
     @Test
@@ -48,5 +51,17 @@ public class VerifyPages extends BaseTest {
         assertTrue(contactPage.isSuccessMessageVisible(), "Mensagem de sucesso deve estar visível");
         contactPage.clickHome();
         assertTrue(homePage.isHomePageVisible(), "Página inicial deve estar visível");
+    }
+
+    @Test
+    @DisplayName("Test Case 7: Verify Test Cases Page")
+    @Description("Acessar pagina de Verify Test Cases Page")
+    @Story("Entrar na pagina de Test Cases")
+    void verifyTestCasesPage() {
+
+        homePage.openHomePage();
+        assertTrue(homePage.isHomePageVisible(), "Página inicial deve estar visível");
+        homePage.clickTestCases();
+        assertTrue(testCasePage.isTestCasesPageVisible());
     }
 }

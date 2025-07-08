@@ -30,7 +30,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'Contact us')]")
     private WebElement contactUsBtn;
 
-
+    @FindBy(css = "a[href='/test_cases']")
+    private WebElement testCaseBtn;
 
     // ------------------------------------------------------------
 
@@ -72,5 +73,9 @@ public class HomePage extends BasePage {
 
     public void clickContactUs() {
         contactUsBtn.click();
+    }
+
+    public void clickTestCases() {
+        testCaseBtn.click();
     }
 }

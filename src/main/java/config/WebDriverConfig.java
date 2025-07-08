@@ -28,7 +28,7 @@ public class WebDriverConfig {
             //    chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--disable-notifications");
                 chromeOptions.addArguments("--disable-popup-blocking");
-            //    chromeOptions.addArguments("--headless"); // Para execução sem interface gráfica
+                chromeOptions.addArguments("--headless"); // Para execução sem interface gráfica
                 driver = new ChromeDriver(chromeOptions);
                 break;
                 
