@@ -33,6 +33,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/test_cases']")
     private WebElement testCaseBtn;
 
+    @FindBy(css = "a[href='/products']")
+    private WebElement productsBtn;
+
     // ------------------------------------------------------------
 
     public HomePage(WebDriver driver) {
@@ -78,4 +81,9 @@ public class HomePage extends BasePage {
     public void clickTestCases() {
         testCaseBtn.click();
     }
+
+    public void clickProducts() {
+        productsBtn.click();
+    }
+
 }
